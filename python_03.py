@@ -1,0 +1,7 @@
+nombre = input("Cual es tu nombre?")
+edad = int(input("Cual es tu edad?"))
+ciudad = input("Cual es tu ciudad?")
+casado = input("Estas casado?")
+numero_1 = int(input("Ingresa un numero del 1 al 100:"))
+numero_2 = int(input("Ingresa un numero del 100 al 200:"))
+print(f'Hola mi nombre es {nombre}, mi edad es {edad}, soy de la ciudad de {ciudad} y el resultado de mi division es {numero_1/numero_2}')
