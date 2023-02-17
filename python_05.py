@@ -13,11 +13,15 @@ def division(numerod_a, numerod_b):
 def modulo(numeromod_a, numeromod_b):
     return numeromod_a % numeromod_b
 
+def num_int_to_float(entero):
+    return float(entero)
+
 def celsius_a_farenheit(celsiusf):
     return celsiusf * 1.8 + 32
 
 num_a = float(input("Ingresa el primer numero"))
 num_b = float(input("Ingresa el segundo numero:"))
+num_int = int(input("Ingresa un numero entero"))
 celcius = float(input("Ingresa los grados celcius:"))
 
 
@@ -26,5 +30,6 @@ print(f"Resta {resta(num_a, num_b)}")
 print(f"Multiplicacion {multiplicacion(num_a, num_b)}")
 print(f"Division {division(num_a, num_b)}")
 print(f"Modulo {modulo(num_a, num_b)}")
+print(f"Numero entero a flotante {num_int_to_float(num_int)}")
 print(f"Grados Farenheit {celsius_a_farenheit(celcius)}")
 
