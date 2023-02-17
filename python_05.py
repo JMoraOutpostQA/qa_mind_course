@@ -19,6 +19,12 @@ def num_int_to_float(entero):
 def celsius_a_farenheit(celsiusf):
     return celsiusf * 1.8 + 32
 
+def es_par(int):
+    if int % 2 == 0:
+        return "Es par"
+    else:
+        return "No es par"
+
 num_a = float(input("Ingresa el primer numero"))
 num_b = float(input("Ingresa el segundo numero:"))
 num_inte = int(input("Ingresa un numero entero"))
@@ -32,4 +38,5 @@ print(f"Division {division(num_a, num_b)}")
 print(f"Modulo {modulo(num_a, num_b)}")
 print(f"Numero entero a flotante {num_int_to_float(num_inte)}")
 print(f"Grados Farenheit {celsius_a_farenheit(celcius)}")
+print(f"Tu numero entero {es_par(num_inte)}")
 
