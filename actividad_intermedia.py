@@ -13,7 +13,7 @@ def getcurso():
             print("Opcion erronea")
     curso["clases"] = int(input("Ingresa el numero de clases que tendra el curso: "))
     return curso
-def modcurso(academy):
+def modestado(academy):
     for lop in academy:
         print(lop["nombre"])
     nombre_del_curso = input("Que curso quiere modificar ")
@@ -23,6 +23,9 @@ def modcurso(academy):
     for index, lop in enumerate(academy):
         if lop["nombre"] == nombre_del_curso:
             academia[index]["estado"] = estado
+            break
+    else:
+        print("Curso inexistente")
 def consulta(academy):
     for lop in academy:
         print(lop["nombre"])
@@ -38,9 +41,42 @@ def imprimirformatoconsulta(dic):
     print(f"Numero de alumnos: {dic['cantidad']}")
     print(f"Estado de curso: {dic['estado']}")
     print(f"Numero de clases: {dic['clases']}")
+def modclases(academy):
+    for lop in academy:
+        print(lop["nombre"])
+    nombre_del_curso = input("Que curso quiere modificar ")
+    clases = int(input("Cuantas clases tendra el curso: "))
+    for index, lop in enumerate(academy):
+        if lop["nombre"] == nombre_del_curso:
+            academia[index]["clases"] = clases
+            break
+    else:
+        print('Curso inexistente')
+def modalumnos(academy):
+    for lop in academy:
+        print(lop["nombre"])
+    nombre_del_curso = input("Que curso quiere modificar ")
+    alumnos = int(input("Cuantos alumnos tendra el curso: "))
+    for index, lop in enumerate(academy):
+        if lop["nombre"] == nombre_del_curso:
+            academia[index]["cantidad"] = alumnos
+            break
+    else:
+        print("Curso inexistente")
+def borrarcurso(academy):
+    for lop in academy:
+        print(lop["nombre"])
+    nombre_del_curso = input("Que curso quiere borrar ")
+    for index, lop in enumerate(academy):
+        if lop["nombre"] == nombre_del_curso:
+            academia.pop(index)
+            break
+    else:
+        print("Curso inexistente")
+
 
 ESTADOS = ("Activo", "En curso", "Finalizado")
-OPCIONES = ("Alta", "Modificar estado", "Consulta especifica", "Consulta general")
+OPCIONES = ("Alta", "Modificar estado", "Consulta especifica", "Consulta general", "Modificar clases", "Modificar alumnos", "Eliminar curso")
 
 academia = []
 while True:
@@ -51,13 +87,19 @@ while True:
     if opcion == OPCIONES[0]:
         academia.append(getcurso())
     elif opcion == OPCIONES[1]:
-        modcurso(academia)
+        modestado(academia)
     elif opcion == OPCIONES[2]:
         consulta(academia)
     elif opcion == OPCIONES[3]:
         for c in academia:
             imprimirformatoconsulta(c)
             input("Press enter para continuar")
+    elif opcion == OPCIONES[4]:
+        modclases(academia)
+    elif opcion == OPCIONES[5]:
+        modalumnos(academia)
+    elif opcion == OPCIONES[6]:
+        borrarcurso(academia)
     else:
         print("Opcion incorrecta vuelve a intentar")
         input("Press enter para continuar")
