@@ -1,4 +1,8 @@
 import random
+import requests
+from faker import Faker
+
+fake = Faker()
 
 
 class participante:
@@ -58,12 +62,18 @@ def torneo():
             participantes.pop(jugador1)
     else:
         torneo()
+def jugadoresautomaticos(loop):
+    for x in range(loop):
+        nombre = fake.name()
+        email = fake.email()
+        raza = RAZA[random.randint(0,2)]
+        participantes.append(participante(nombre, email, 0, raza, 0, "Activo"))
 
 """Variable globales"""
 RAZA = ("Terran", "Zerg", "Protoss")
 participantes = []
 participantesinactivos = []
-OPCIONES = ("Añadir un jugador", "Empezar torneo")
+OPCIONES = ("Añadir un jugador", "Empezar torneo", "Añadir jugadores automaticamente")
 menu = True
 
 """Main"""
@@ -78,6 +88,13 @@ while menu:
             menu = False
         else:
             print("Necesitas añadir a otro participante para empezar el torneo")
+    elif opcion == OPCIONES[2]:
+        loop = int(input("Cuantos jugadores quieres agregar"))
+        if loop % 4 == 0:
+            jugadoresautomaticos(loop)
+            menu = False
+        else:
+            print("Ingresa un numero el cual se pueda usar en un torneo")
     else:
         print("Elige una opcion valida")
 while len(participantes) != 1:
